@@ -453,19 +453,13 @@ def recursive_optimize(layer_tensor, image,
 session = tf.InteractiveSession(graph=model.graph)
 
 
-image = load_image(filename='images/hulk.jpg')
+image = load_image(filename='images/escher_planefilling2.jpg')
 plot_image(image)
 
-layer_tensor = model.layer_tensors[2]
-layer_tensor
 
-img_result = optimize_image(layer_tensor, image,
-                   num_iterations=10, step_size=6.0, tile_size=400,
-                   show_gradient=True)
-
-
+layer_tensor = model.layer_tensors[6]
 img_result = recursive_optimize(layer_tensor=layer_tensor, image=image,
                  num_iterations=10, step_size=3.0, rescale_factor=0.7,
                  num_repeats=4, blend=0.2)
 
-save_image(img_result, filename='deepdream3.jpg')
+save_image(img_result, filename='deepdreamin.jpg')
